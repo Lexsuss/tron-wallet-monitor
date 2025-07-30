@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 
 ADDRESS = "TRYtrEkTFiZbuuzt7o7ac7TVeEC5PLsnQa"
-TELEGRAM_TOKEN = "8149165281:AAEPR3WY6rjAAF9tdizK_cLRnukbAnsMw"
+TELEGRAM_TOKEN = "8149165281:AAEPR3WYg6rjAAFf9tdizK_cLRnukbAnsMw"
 CHAT_ID = "374907547"
 LAST_TX_FILE = "last_tx.txt"
 
