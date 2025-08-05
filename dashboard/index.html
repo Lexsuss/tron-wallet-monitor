@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRON Wallet Monitor</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>📊 Monitoraggio Wallet TRON</h1>
+  <p>Analisi dei wallet: <code>TRYtrEkTFiZbuuzt7o7ac7TVeEC5PLsnQa</code> e <code>TDtibBQcXnjpYJszXGuFUEVMoceS6voKGZ</code></p>
+
+  <canvas id="trxChart" width="800" height="400"></canvas>
+
+  <script>
+    // Qui verranno caricati i dati tramite fetch o inseriti a mano
+    const ctx = document.getElementById('trxChart').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'Importo TRX',
+                data: [],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 2,
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: { title: { display: true, text: 'Data' } },
+                y: { title: { display: true, text: 'Importo (TRX)' } }
+            }
+        }
+    });
+  </script>
+</body>
+</html>
