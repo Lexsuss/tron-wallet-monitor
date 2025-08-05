@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Monitor Wallet TRON</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h2>Dashboard Monitor TRON</h2>
+  <p>I dati vengono aggiornati ogni 10 minuti via GitHub Actions.</p>
+  <p><a href="../data/wallet_TRYtr.csv" target="_blank">📄 CSV Wallet 1</a> |
+     <a href="../data/wallet_TDtib.csv" target="_blank">📄 CSV Wallet 2</a></p>
+  <canvas id="chart" width="800" height="300"></canvas>
+  <script>
+    async function loadChart() {
+      const res = await fetch('../data/wallet_TRYtr.csv');
+      const text = await res.text();
+      const rows = text.split('\n').slice(1);
+      const labels = [], values = [];
+      for (let row of rows) {
+        const cols = row.split(',');
+        if (cols.length >= 2) {
+          labels.push(cols[0]);
+          values.push(parseFloat(cols[3]));
+        }
+      }
+      const ctx = document.getElementById('chart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels.reverse(),
+          datasets: [{
+            label: 'Importi Wallet 1 (TRX)',
+            data: values.reverse(),
+            borderColor: 'green',
+            borderWidth: 2
+          }]
+        }
+      });
+    }
+    loadChart();
+  </script>
+</body>
+</html>
